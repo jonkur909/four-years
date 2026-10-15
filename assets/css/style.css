@@ -1,0 +1,289 @@
+:root {
+    --black: #070707;
+    --black-soft: #111111;
+    --ivory: #f3ead8;
+    --ivory-dim: rgba(243, 234, 216, 0.62);
+    --gold: #c6a15b;
+    --gold-bright: #e8d5a3;
+    --gold-line: rgba(198, 161, 91, 0.55);
+    --serif: "Cormorant Garamond", "Times New Roman", serif;
+    --sans: "Outfit", "Helvetica Neue", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--black);
+    color: var(--ivory);
+}
+
+body {
+    font-family: var(--serif);
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+body.is-locked {
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.gold-rule {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.meander {
+    height: 10px;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            var(--gold) 0 8px,
+            transparent 8px 12px,
+            var(--gold) 12px 20px,
+            transparent 20px 24px
+        );
+    opacity: 0.85;
+}
+
+/* Gate */
+.gate {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    background: var(--black);
+    transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+.gate.is-gone {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.gate-inner {
+    text-align: center;
+    padding: 2rem;
+    max-width: 28rem;
+}
+
+.gate-kicker {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 1.4rem;
+}
+
+.gate-title {
+    font-weight: 500;
+    font-size: clamp(3.2rem, 10vw, 6.5rem);
+    letter-spacing: 0.08em;
+    margin: 0;
+    line-height: 0.9;
+    font-variant-numeric: lining-nums;
+}
+
+.gate-sub {
+    margin: 1.25rem 0 2.4rem;
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--ivory-dim);
+}
+
+.gate button {
+    appearance: none;
+    background: transparent;
+    color: var(--ivory);
+    border: 1px solid var(--gold);
+    padding: 0.85rem 1.8rem;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.gate button:hover,
+.gate button:focus-visible {
+    background: var(--gold);
+    color: var(--black);
+    outline: none;
+}
+
+/* Letter */
+.letter {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 0 1.4rem 6rem;
+}
+
+.hero,
+.chapter {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4.5rem 0;
+}
+
+.hero-frame {
+    border: 1px solid var(--gold-line);
+    padding: 3.2rem 1.6rem 2.8rem;
+    text-align: center;
+}
+
+.eyebrow {
+    font-family: var(--sans);
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    font-size: 0.68rem;
+    color: var(--gold);
+    margin: 0 0 1.5rem;
+}
+
+.hero h1 {
+    font-size: clamp(2.6rem, 8vw, 5.2rem);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    margin: 1.2rem 0 0.4rem;
+    line-height: 0.95;
+}
+
+.date-line {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ivory-dim);
+    margin: 1.1rem 0 0;
+}
+
+.lede {
+    font-size: clamp(1.35rem, 3vw, 1.85rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.35;
+    margin: 0;
+}
+
+.chapter-num {
+    font-family: var(--sans);
+    color: var(--gold);
+    letter-spacing: 0.32em;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+}
+
+.chapter h2 {
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    font-weight: 500;
+    margin: 0 0 1.4rem;
+    letter-spacing: 0.02em;
+}
+
+.chapter p {
+    font-size: 1.2rem;
+    color: var(--ivory);
+    margin: 0 0 1.15rem;
+    max-width: 36rem;
+}
+
+.chapter p.quiet {
+    color: var(--ivory-dim);
+    font-style: italic;
+}
+
+.photos {
+    display: grid;
+    gap: 0.7rem;
+    margin-top: 2.2rem;
+    grid-template-columns: 1fr;
+}
+
+.photos figure {
+    margin: 0;
+    border: 1px solid var(--gold-line);
+    background: var(--black-soft);
+}
+
+.photos img {
+    width: 100%;
+    height: 52vw;
+    max-height: 28rem;
+    object-fit: cover;
+    filter: saturate(0.86) contrast(1.04);
+}
+
+.sign-off {
+    margin-top: 2.5rem;
+}
+
+.sign-off p {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.from {
+    margin-top: 1.6rem;
+    font-style: italic;
+    font-size: 1.45rem;
+}
+
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+[data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+}
+
+@media (min-width: 720px) {
+    .photos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .photos img {
+        height: 18rem;
+    }
+
+    .hero-frame {
+        padding: 4.2rem 3rem 3.4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
